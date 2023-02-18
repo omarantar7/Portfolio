@@ -1,0 +1,14 @@
+.socialIcons{
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 0;
+    z-index: 100;
+}
+.mail{
+    display: flex;
+}
+
+@media(max-width:600px){
+    .mail > p{
+    display: none;
+}}

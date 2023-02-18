@@ -1,0 +1,33 @@
+.skill{
+    display: flex;
+    position: relative;
+    cursor: pointer;
+}
+.skill > img{
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.Percentage{
+    position: absolute;
+    opacity: 0;
+    border-radius: 50%;
+}
+.Percentage:hover{
+    background: linear-gradient(45deg,#000,brown);
+    width: 5rem;
+    height: 5rem;
+    transition-duration: 0.4s;
+    opacity: 1;
+}
+.Percentage > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Percentage > div > p{
+    opacity: 1;
+    font-weight: bold;
+    font-size: 1.5rem;
+}

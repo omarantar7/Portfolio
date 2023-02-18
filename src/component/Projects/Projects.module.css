@@ -1,0 +1,89 @@
+.projects{
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    height: screen;
+    position: relative;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+    margin-top: 10rem;
+}
+.projects > h1{
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+    color: gray;
+}
+.project{
+    position: relative;
+    display: flex;
+    overflow-x: scroll;
+    gap: 10rem;
+    width: 25rem;
+    overflow-y: hidden;
+    scroll-snap-type: mandatory;
+    scroll-snap-align: x;
+    z-index: 20;
+    align-items: center;
+    padding: 0 2rem;
+}
+.project::-webkit-scrollbar{
+    width: 1rem;
+}
+.project::-webkit-scrollbar-track{
+    background: transparent;
+}
+.project::-webkit-scrollbar-thumb{
+    background-color: #ccc;
+    border-radius: 2rem;
+}
+
+.bg{
+    width: 100%;
+    position: absolute;
+    top: 10rem;
+    background-color: #ff0808;
+    opacity: 0.3;
+    height: 500px;
+    transform: skewY(-12deg);
+}
+.project > div{
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+.project > div > a > img {
+    height: 15rem;
+    width: 15rem;
+    object-fit: cover;
+    border-radius: 50% 10%/20% 40%;
+}
+.project>div>a{
+    text-decoration: none;
+}
+.project > div > a > h3 {
+    font-weight: bold;
+    color: black;
+    letter-spacing: .5rem;
+    border-bottom: .5rem solid black;
+    font-size: 2rem;
+    width: 25rem;
+}
+.project > div > a > p{
+    letter-spacing: 0.2rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #fff;
+}
+ @media(max-width:600px){
+.project {
+    padding: 0;
+}
+.project > div > a > p{
+    font-size: 1rem;
+    text-align: center;
+    width: 70%;
+    text-align: center;
+    margin-left: 2rem;
+}
+} 

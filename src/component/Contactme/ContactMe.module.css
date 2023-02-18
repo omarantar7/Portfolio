@@ -1,0 +1,83 @@
+.contactme{
+    position: relative;
+    margin: 10rem 0;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.contactme>h1{
+    color: gray;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+}
+.contact{
+    margin-bottom: 5rem;
+}
+.contact > h2{
+    font-weight: bold;
+    text-transform: uppercase;
+    color: gray;
+}
+.mail{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1.2rem;
+    justify-content: center;
+}
+.mailIcon{
+    animation: ico 2s infinite forwards ease-in-out alternate;
+}
+@keyframes ico {
+    from{
+        color: #ff0808;
+    }
+    to{
+        color: #ffc908;
+    }
+}
+.frm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+}
+.frm > div > input:nth-child(1){
+    margin-right: .5rem;
+}
+.inp{
+    outline: none;
+    border: none;
+    padding: .8rem 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: .5rem;
+    background-color: rgba(49, 46, 46, 0.8);
+    border-bottom: 4px solid #000;
+    color: gray;
+    animation: ico 2s infinite forwards ease-in-out alternate;
+}
+.inp:hover,.inp:focus{
+    border-bottom: 4px solid #ffc908;
+}
+.frm > button{
+    padding: .8rem 1rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    background-color: #ffc908;
+    border-radius: .5rem;
+}
+.frm >button:hover{
+    background-color: #ff0808;
+    transition-duration: 0.5s;
+}
+@media (max-width:600px) {
+    .frm{
+        gap: 1rem;
+        width: 80%;
+    }
+    .inp:nth-child(1),.inp:nth-child(2){
+        width: 90%;
+    }
+}

@@ -1,0 +1,39 @@
+.about{
+    margin-top: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.about > h1{
+    color: gray;
+    letter-spacing: 1rem;
+    text-transform: uppercase;
+}
+.content{
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    align-items: center;
+    text-align: center;
+
+}
+
+.content > img{
+    border-radius: 50% 10%/20% 40%;
+}
+.text > p{
+    max-width: 35rem;
+    font-size: 1.5rem;
+    color: #ffe6dc;;
+}
+@media(max-width:800px){
+    .content > img{
+        border-radius: 50%;
+        height: 15rem;
+        width: 15rem;
+    }
+    .content{
+        flex-direction: column;
+    }
+}

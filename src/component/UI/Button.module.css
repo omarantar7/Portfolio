@@ -1,0 +1,24 @@
+.btn{
+    font: inherit;
+    background-color: transparent;
+    color: rgb(128, 128, 128,0.5);
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all;
+    padding: 0.25rem 1rem;
+    border: none;
+   
+}
+@media(max-width:500px){
+    .btn{
+        padding: 0.25rem 0.5rem;
+        border: none;
+    }
+}
+.btn:hover{
+    color: white;
+    border: 1px solid #CCC;
+    border-radius: 4rem;
+    opacity: 0.6;
+}

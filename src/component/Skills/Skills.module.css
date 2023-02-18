@@ -1,0 +1,25 @@
+.skills{
+    align-items: center;
+    text-align: center;
+    margin-top: 10rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+.skills > h1{
+    color: gray;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+}
+.skills > h3{
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    color: gray;
+}
+.skillItems{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+}
