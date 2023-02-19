@@ -4,7 +4,7 @@ import { FiMail } from "react-icons/fi";
 import { MdLocationPin } from "react-icons/md";
 import ContactForm from "./ContactForm";
 import { motion } from "framer-motion";
-import ErrorModal from "../UI/AlertModal";
+import AlertModal from "../UI/AlertModal";
 
 const ContactMe = () => {
   const [close, setClose] = useState(false);
@@ -20,9 +20,9 @@ const ContactMe = () => {
       className={classes.contactme}
     >
       {close && (
-        <ErrorModal onClose={onCloseHandler}>
+        <AlertModal onClose={onCloseHandler}>
           I Will Be In Touch With You Soon!
-        </ErrorModal>
+        </AlertModal>
       )}
       <h1>Contact Me</h1>
       <div className={classes.contact}>
