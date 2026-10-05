@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Green-black #06110D + neon lime #C8FF00. */
+  --color-background: #06110d;
+  --color-surface: #13241d;
+  --color-heading: #eef5f1;
+  --color-link: #d6e3dc;
+  --color-body: #9db0a7;
+  --color-muted: #6c8278;
+  --color-line: #2f4a3f;
+  --color-accent: #c8ff00;
+  --color-accent-soft: #c8ff00;
+  --color-accent-ink: #06110d;
+  --color-highlight: #c8ff00;
+  --color-spotlight: rgb(200 255 0 / 0.06);
+  --color-card-edge: rgb(200 255 0 / 0.08);
+
+  --inset-shadow-card: inset 0 1px 0 0 var(--color-card-edge);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) var(--color-background);
+    overflow-x: hidden
+  }
+
+  html::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 9999px;
+  }
+
+  body {
+    font-feature-settings: "ss03", "cv02", "cv11";
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+/* Centers the face when Profile.jpeg is cropped into the round avatar. */
+@utility object-face {
+  object-position: 50% 28%;
+}
+
+/* Mouse-following glow; Spotlight.tsx updates --spotlight-x / --spotlight-y. */
+@utility spotlight {
+  background: radial-gradient(
+    600px circle at var(--spotlight-x, 0px) var(--spotlight-y, 0px),
+    var(--color-spotlight),
+    transparent 80%
+  );
 }
