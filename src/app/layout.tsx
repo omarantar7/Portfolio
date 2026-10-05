@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Inter } from "next/font/google";
 import { profile, siteUrl } from "@/data/portfolio";
 import "./globals.css";
@@ -73,6 +74,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="bg-background font-sans leading-relaxed text-body antialiased selection:bg-accent selection:text-accent-ink">
         {children}
       </body>
+      {/* Production only, so local dev visits don't count as traffic. */}
+      {process.env.NODE_ENV === "production" && (
+        <GoogleAnalytics gaId="G-Q0EGEMEPZR" />
+      )}
     </html>
   );
 }
