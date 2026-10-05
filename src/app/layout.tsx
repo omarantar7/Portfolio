@@ -52,6 +52,9 @@ export const metadata: Metadata = {
     title,
     description: profile.description,
   },
+  verification: {
+    google: "pUhvOpePqlAVS3oWYcyMsivLYcgxEtGkBKFTYzeG4Oo",
+  },
   robots: {
     index: true,
     follow: true,
