@@ -288,7 +288,7 @@ export default function Home() {
             </Section>
 
             <footer className="pb-16 sm:pb-0 flex justify-end">
-              <a
+              {/* <a
                 className="group/v1 inline-flex items-center gap-3 rounded-full border border-line bg-surface/40 py-2 pl-2 pr-5 transition hover:border-accent/50 hover:bg-surface focus-visible:border-accent/50 focus-visible:bg-surface motion-reduce:transition-none"
                 href={profile.previousVersion}
                 target="_blank"
@@ -313,7 +313,7 @@ export default function Home() {
                     />
                   </span>
                 </span>
-              </a>
+              </a> */}
             </footer>
           </main>
         </div>
