@@ -7,6 +7,7 @@ import ArrowLink from "@/components/ArrowLink";
 import Card from "@/components/Card";
 import Nav from "@/components/Nav";
 import Section from "@/components/Section";
+import SkillGroups from "@/components/SkillGroups";
 import SocialLinks from "@/components/SocialLinks";
 import Spotlight from "@/components/Spotlight";
 import TagList from "@/components/TagList";
@@ -44,17 +45,59 @@ const personJsonLd = {
     "Nuxt",
     "React",
     "Next.js",
+    "Tailwind CSS",
     "Node.js",
     "Express",
+    "REST API design",
+    "Database design",
     "Prisma",
     "PostgreSQL",
     "MySQL",
+    "Redis",
+    "Vitest",
+    "Jest",
+    "Web security",
     "Docker",
     "CI/CD",
+    "Web performance",
+    "Web accessibility",
+    "Internationalization (i18n) and RTL",
     "UI/UX design",
+    "SEO",
+    "AI-assisted development",
+    "Claude Code",
+    "GitHub Copilot",
   ],
+  knowsLanguage: ["ar", "en"],
   sameAs: [profile.github, profile.linkedin],
 };
+
+// Looks projects up by title so reordering the list never breaks the About links.
+function projectUrl(title: string) {
+  const project = projects.find((p) => p.title === title);
+  if (!project) throw new Error(`No project titled "${title}" in portfolio.ts`);
+  return project.url;
+}
+
+function ProjectLink({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      className="font-medium text-heading hover:text-accent focus-visible:text-accent"
+      href={projectUrl(title)}
+      target="_blank"
+      rel="noreferrer noopener"
+      aria-label={`${title} (opens in a new tab)`}
+    >
+      {children}
+    </a>
+  );
+}
 
 function Highlight({ children }: { children: React.ReactNode }) {
   return <span className="font-medium text-heading">{children}</span>;
@@ -101,48 +144,30 @@ export default function Home() {
               <p className="mb-4">
                 I’m a full-stack software engineer based in{" "}
                 <Highlight>{profile.location}</Highlight>, and I enjoy taking
-                products from an idea all the way to production. My work spans
-                the whole lifecycle: gathering requirements, designing system
-                architecture, modeling databases and APIs, building the backend
-                and frontend, and running the infrastructure that keeps it all
-                live.
+                products from an idea all the way to production, from database
+                and API design to the servers that keep them live.
               </p>
               <p className="mb-4">
-                Most recently, I was a Full-Stack Web Developer at{" "}
-                <Highlight>CodenDot</Highlight>, where I helped deliver{" "}
-                <Highlight>10+ web applications</Highlight> for clients, from
-                SaaS dashboards and CMS platforms to a portfolio-building
-                platform, and introduced the company’s first CI/CD pipeline. On
-                my own, I’ve designed, built, and deployed production products
-                like a{" "}
-                <a
-                  className="font-medium text-heading hover:text-accent focus-visible:text-accent"
-                  href={projects[0].url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label="Dental clinic management SaaS (opens in a new tab)"
-                >
-                  dental clinic management SaaS
-                </a>{" "}
-                and{" "}
-                <a
-                  className="font-medium text-heading hover:text-accent focus-visible:text-accent"
-                  href={projects[1].url}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label="ChefBey (opens in a new tab)"
-                >
-                  ChefBey
-                </a>
-                .
+                At <Highlight>CodenDot</Highlight>, I helped deliver{" "}
+                <Highlight>10+ web applications</Highlight> for clients and
+                introduced the company’s first CI/CD pipeline. I’ve also shipped{" "}
+                <ProjectLink title="Mabeet">Mabeet</ProjectLink>, a
+                commission-free booking platform for Lebanese guesthouses, with
+                a team of 3, and built a{" "}
+                <ProjectLink title="Dental Clinic Management SaaS">
+                  dental clinic SaaS
+                </ProjectLink>{" "}
+                and <ProjectLink title="ChefBey">ChefBey</ProjectLink> on my
+                own.
               </p>
               <p>
                 My core stack is Vue, Nuxt, React, Next.js, Node.js, Express,
-                Prisma, PostgreSQL, MySQL, and Docker, and I care a lot about{" "}
-                <Highlight>clean architecture</Highlight>, maintainability, and
-                sound engineering principles. I also have a background in UI/UX
-                design, which still shapes how I think about the people using
-                what I build.
+                PostgreSQL, Redis, and Docker. I care about{" "}
+                <Highlight>clean architecture</Highlight>, performance, and
+                accessibility, and I work daily with{" "}
+                <Highlight>Claude Code</Highlight> and{" "}
+                <Highlight>GitHub Copilot</Highlight>. I speak Arabic and
+                English, and build right-to-left interfaces for Arabic.
               </p>
             </Section>
 
@@ -190,6 +215,10 @@ export default function Home() {
               </div>
             </Section>
 
+            <Section id="skills" title="Skills" label="Skills and languages">
+              <SkillGroups />
+            </Section>
+
             <Section id="projects" title="Projects" label="Selected projects">
               <ul className="group/list">
                 {projects.map((project) => (
@@ -206,19 +235,21 @@ export default function Home() {
                         <p className="mt-2 text-sm leading-normal">
                           {project.description}
                         </p>
-                        <a
-                          className="relative mt-2 inline-flex items-center text-sm font-medium text-link hover:text-accent focus-visible:text-accent"
-                          href={project.sourceUrl}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          aria-label={`${project.title} source code on GitHub (opens in a new tab)`}
-                        >
-                          <FaGithub
-                            className="mr-1 h-3 w-3"
-                            aria-hidden="true"
-                          />
-                          <span>Source Code</span>
-                        </a>
+                        {project.sourceUrl && (
+                          <a
+                            className="relative mt-2 inline-flex items-center text-sm font-medium text-link hover:text-accent focus-visible:text-accent"
+                            href={project.sourceUrl}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            aria-label={`${project.title} source code on GitHub (opens in a new tab)`}
+                          >
+                            <FaGithub
+                              className="mr-1 h-3 w-3"
+                              aria-hidden="true"
+                            />
+                            <span>Source Code</span>
+                          </a>
+                        )}
                         <TagList tags={project.tags} />
                       </div>
                       <Image
@@ -234,9 +265,10 @@ export default function Home() {
               </ul>
               <div className="mt-12">
                 <ArrowLink
-                  href={profile.repositories}
+                  href="/projects"
                   text="View Full Project Archive"
                   className="font-semibold"
+                  internal
                 />
               </div>
             </Section>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { HiMiniArrowRight, HiMiniArrowUpRight } from "react-icons/hi2";
 
 type ArrowLinkProps = {
@@ -26,7 +27,7 @@ export default function ArrowLink({
   const Arrow = internal ? HiMiniArrowRight : HiMiniArrowUpRight;
 
   return (
-    <a
+    <Link
       className={`group/link inline-flex items-baseline text-base leading-tight text-heading hover:text-accent focus-visible:text-accent ${className}`}
       href={href}
       target={internal ? undefined : "_blank"}
@@ -50,6 +51,6 @@ export default function ArrowLink({
           />
         </span>
       </span>
-    </a>
+    </Link>
   );
 }
