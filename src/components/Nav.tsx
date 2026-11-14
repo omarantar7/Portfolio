@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const items = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
+  { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
 ];
 
@@ -12,22 +13,42 @@ export default function Nav() {
   const [activeId, setActiveId] = useState(items[0].id);
 
   useEffect(() => {
-    // Highlight whichever section crosses the top fifth of the viewport.
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActiveId(entry.target.id);
+    let frame = 0;
+
+    // The active section is the last one whose top has passed the top fifth of the
+    // viewport. Sections are looked up on every pass, so the highlight never goes
+    // stale when the page re-renders, and fast jumps (End key, scrollbar drags) can't
+    // skip a section the way intersection events can.
+    const update = () => {
+      frame = 0;
+      const line = window.innerHeight * 0.2;
+      let current = items[0].id;
+      for (const { id } of items) {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= line) {
+          current = id;
         }
-      },
-      { rootMargin: "0px 0px -80% 0px" },
-    );
+      }
+      // At the very bottom the last sections can't scroll any higher, so mark the last item.
+      const atBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+      if (atBottom) current = items[items.length - 1].id;
+      setActiveId(current);
+    };
 
-    for (const { id } of items) {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    }
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
 
-    return () => observer.disconnect();
+    schedule();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
   }, []);
 
   return (
