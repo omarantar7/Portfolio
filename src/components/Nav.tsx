@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 const items = [
   { id: "about", label: "About" },
   { id: "experience", label: "Experience" },
-  { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
 ];
 
 export default function Nav() {
