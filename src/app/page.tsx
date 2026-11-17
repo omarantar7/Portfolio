@@ -215,10 +215,6 @@ export default function Home() {
               </div>
             </Section>
 
-            <Section id="skills" title="Skills" label="Skills and languages">
-              <SkillGroups />
-            </Section>
-
             <Section id="projects" title="Projects" label="Selected projects">
               <ul className="group/list">
                 {projects.map((project) => (
@@ -271,6 +267,10 @@ export default function Home() {
                   internal
                 />
               </div>
+            </Section>
+
+            <Section id="skills" title="Skills" label="Skills and languages">
+              <SkillGroups />
             </Section>
 
             <Section
